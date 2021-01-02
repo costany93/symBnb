@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+     <div class="container">
+        <h1>Modifier mes informations de profil</h1>
+
+        {{form_start(form)}}
+            {{form_widget(form)}}
+            <button type class="btn btn-outline-danger">Modifier</button>
+        {{form_end(form)}}
+     </div>
+
+{% endblock %}

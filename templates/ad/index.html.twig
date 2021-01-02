@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RBNB ! Nos annonces{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="display-4 my-3">Voici toutes nos annonces </h1>
+        <div class="row">
+            {% for ad in ads %}
+                {% include "ad/_ad.html.twig" %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

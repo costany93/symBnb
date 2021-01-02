@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <h1>Oops, La page que vous recherchez n'existe pas</h1>
+        <a href="{{path('home_index')}}" class="btn btn-primary">Retour à l'acceuil</a>
+        <a href="{{path('ads_index')}}" class="btn btn-danger">Voir toutes nos annonces</a>
+    </div>
+{% endblock %}

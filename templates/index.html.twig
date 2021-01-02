@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+{% block title %}Bienvenue sur RBNB{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron mt-3">
+            <p class="display-3">Bienvenue sur RBNB</p>
+            <p class="lead">Nous mettons en relation les voyageurs et les propriétaires qui veulent profiter d'opportunités de gagner de l'argent ! En proposant leurs bien à la location</p>
+            <hr class="my-2">
+            <p class="lead">
+                <a href="#" class="btn btn-primary">Voir Nos Annonces</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Nos appartements stars</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Appartement 3 pièces <strong>10 &euro; / nuit</strong>
+
+                    </div>
+                    <img src="http://placehold.it/1000x400" alt="Une image normale" style="height: 200px; width: 100%; display: block">
+                    <div class="card-body mb-3">
+                        <p class="card-title">Mon appartement</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid minus modi dolorem rerum consectetur expedita, exercitationem nam aspernatur maiores! Nemo!</p>
+                        <a href="#" class="btn btn-secondary">Voir l'annonce</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>Utilisateurs stars</h2>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body mb-3">
+                        <h4 class="card-title">Prince Kandza</h4>
+                        <hr>
+
+                        <div class="card-text">
+                            <img src="http://placehold.it/64x64" alt="Avatar de prince" class="float-left">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, dolorem?</p>
+                            <a href="#" class="btn btn-success float-right">En savoir plus!</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

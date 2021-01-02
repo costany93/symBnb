@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+{% block title %}Modifier votre annonce{% endblock %}
+{% form_theme form 'ad/_collection.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Modifier l'annonce {{ad.title}} ton annonce</h1>
+        <div>
+            {{form_start(form)}}
+                {{form_widget(form)}}
+                <button class="btn btn-danger">Modifier l'annonce</button>
+            {{form_end(form)}}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        $('#add-image').click(function(){
+            //je récupère la valeur de mon champs caché widgets-counter
+            const numberOfEntry = +$('#widgets-counter').val();
+            console.log(numberOfEntry);
+
+            //maintenant je récupère le prototype d'une nouvelle entrée de mon formulaire ad_images et je l'atribut name par le numéro de l'entrée récupéré ci-dessus
+            const templat = $('#ad_images').data('prototype').replace(/__name__/g, numberOfEntry);
+            //j'injecte simplement le code de mon prototype dans ma div pour créer le champs au clic du button
+
+            $('#ad_images').append(templat);
+            $('#widgets-counter').val(numberOfEntry + 1);
+            handleDelete();
+        });
+        
+        //je crée la function qui permettra de gérer la suppression d'une entrée
+
+        function handleDelete(){
+            //dataset représente tous les 
+            $('button[data-action="delete"]').click(function(){
+                const target = this.dataset.target;
+                $(target).remove();
+            });
+        }
+        handleDelete();
+
+        //je crée la function qui récupère le nombre de mes champs images
+
+        function updateCounter(){
+            const count = $('#ad_images div.form-group').length;
+            $('#widgets-counter').val(count);
+        }
+        updateCounter();
+    </script>
+{% endblock %}

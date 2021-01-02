@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    
+    <div class="container">
+        <h1>Mes réservations</h1>
+        <div class="alert alert-primary">
+            <p>Retrouvez ci-dessous toutes vos réseravtions</p>
+        </div>
+
+        {% for booking in app.user.bookings %}
+            {% set ad = booking.ad %}
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ad.coverImage}}" alt="{{ad.title}}" class="img-fluid">
+
+                    <div class="mt-2">
+                        {% set comment = ad.commentFromAuthor(app.user) %}
+
+                        {% if comment is not null %}
+                            {% include "shared/_rating.html.twig" with {'rating': comment.rating}%}
+                        {% else %}
+                            <a href="{{path('booking_show', {id: booking.id})}}#comment">Je commente</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-8">
+                    <h4>{{ad.title}}</h4>
+                    <p>
+                        Réservation n <strong>{{booking.id}}</strong>
+                        Du {{booking.startDate | date('d/m/Y')}} à {{booking.endDate | date('d/m/Y')}} au prix de {{booking.amount}}
+                    </p>
+                    <a href="{{path('booking_show',{id: booking.id})}}" class="btn btn-info">Plus d'infos</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

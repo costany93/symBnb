@@ -1,0 +1,48 @@
+{#Ici nous definissons l'affiche de notre formulaires add_images grace à la convention _nom_widget qui nous permet de modifier l'affichage d'un champs particulier
+Le widget correspond au texte sans label
+La row correspond à toute le champs widget inclu
+#}
+{% block _ad_images_widget %}
+    <p>Ajouter vos images supplémentaire ici</p>
+    {{form_widget(form)}}
+    {#ici nous definissons un champs caché qui représente le nombre de nos sous formulaire#}
+    <input type="hidden" id="widgets-counter" value="0">
+    <button type="button" id="add-image" class="btn btn-danger">Ajouter une image</button>
+{% endblock %}
+
+{#Ici nous définissons comment une ligne va s'afficher c'est à dire label et widget
+dans notre cas nous voulons juste afficher sur une ligne le widget
+#}
+
+{% block _ad_images_entry_row %}
+    {{form_widget(form)}}
+{% endblock %}
+
+{#Ici nous definissons l'affiche des champs de notre formualire qui represente des entrées grace à l'attribut entry_type qui se trouve dans notre entité adType
+
+#}
+
+{% block _ad_images_entry_widget %}
+    {#Ici nous ajoutons id dynamiquement pour pouvoir faire la suppression de l'entrée correspondantes#}
+    <div class="form-group" id="block_{{id}}">
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col">
+                        {{form_widget(form.url)}}
+                        {{form_errors(form.url)}}
+                    </div>
+                    <div class="col">
+                        {{form_widget(form.caption)}}
+
+                        {#Nous permet de capter nos erreur et de les afficher#}
+                        {{form_errors(form.caption)}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <button type="button" data-action="delete" data-target="#block_{{id}}" class="btn btn-danger">X</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
